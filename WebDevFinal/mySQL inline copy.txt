@@ -1,0 +1,40 @@
+CREATE DATABASE Images;
+
+USE Images;
+
+CREATE TABLE Artists(
+	artist		 INT unsigned NOT NULL,
+    name		 VARCHAR(50) NOT NULL,
+    PRIMARY KEY  (artist)
+);
+
+
+CREATE TABLE Photos(
+	id          INT unsigned NOT NULL, 
+	title       VARCHAR(50) NOT NULL,                
+	artist      INT unsigned NOT NULL,                
+	description	VARCHAR(150),
+   	link		VARCHAR(260),
+	price		INT(4) unsigned,
+	PRIMARY KEY (id),
+    FOREIGN KEY	(artist) REFERENCES Artists(artist)
+);
+
+CREATE TABLE Carts(
+    cookie VARCHAR(100) NOT NULL,
+    item INT unsigned NOT NULL,
+    FOREIGN KEY (item) REFERENCES Photos(id)
+);
+
+INSERT INTO Artists (artist, name) VALUES
+	(0,"Devin"),
+    	(1,"Sophia"),
+   	(2,"Greg");
+
+INSERT INTO Photos (id, title, artist, description, link, price) VALUES
+	(1, 'testphoto1', 1, 'bad description', '..\\\\Images\\\\testphoto1.jpg',2000),
+	(2, 'testphoto2', 2, 'also bad description', '..\\\\Images\\\\testphoto2.jpg',4000);
+
+INSERT INTO Carts (cookie, item) VALUES
+	('testcookie', 1),
+	('testcookie', 2);

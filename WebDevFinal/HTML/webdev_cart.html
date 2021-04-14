@@ -71,10 +71,10 @@
 						$price = $inner_row["price"];
 						$htmllink = $inner_row["link"];
 						
-						echo '<tr id="item-$title">';
-						echo '<td><img src="$htmllink" alt="$title"/></td>'; 
-						echo '<td>$title</br>$name</td>';
-						echo '<td>$price</br><input="button" value="Remove" class="remove" id="remove-$title"/></tr>';
+						echo '<tr id="item-'.$title.'">';
+						echo '<td><img src="'.$htmllink.'" alt="'.$title.'"/></td>'; 
+						echo '<td>'.$title.'</br>'.$name.'</td>';
+						echo '<td>'.$price.'</br><input="button" value="Remove" class="remove" id="remove-'.$title.'"/></tr>';
 					}				
 				}
 				echo "</table>";

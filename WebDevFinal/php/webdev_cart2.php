@@ -47,7 +47,7 @@
 
 		</section>
 
-		<button id="paypal">Finish Shopping with <img src="../Images/Icons/paypal.png" alt="Paypal"/></button>
+		<button id="paypal">Finish Shopping with <img src="../Images/paypal.png" alt="Paypal"/></button>
 
 		<?php 
 			require '..//php//database_connection.php';
@@ -70,7 +70,7 @@
 						$htmllink = $inner_row["link"];
 						
 						echo '<tr id="item-'.$title.'">';
-						echo '<td><img src="../Images/Full/'.$htmllink.'" alt="'.$title.'"/></td>'; 
+						echo '<td><img src="'.$htmllink.'" alt="'.$title.'"/></td>'; 
 						echo '<td>'.$title.'</br>'.$name.'</td>';
 						echo '<td>'.$price.'</br><input="button" value="Remove" class="remove" id="remove-'.$title.'"/></tr>';
 					}				

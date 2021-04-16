@@ -33,7 +33,9 @@ INSERT INTO Artists (artist, name) VALUES
 
 INSERT INTO Photos (id, title, artist, description, link, price) VALUES
 	(1, 'testphoto1', 1, 'bad description', 'testphoto1.jpg',2000),
-	(2, 'testphoto2', 2, 'also bad description', 'testphoto2.jpg',4000);
+	(2, 'testphoto2', 2, 'also bad description', 'testphoto2.jpg',4000),
+	(3, 'testphoto3', 2, 'bdalso', 'testphoto3.jpg',5000),
+	(4, 'testphoto4', 0, 'asdsfalds', 'testphoto4.jpg', 6000);
 
 INSERT INTO Carts (cookie, item) VALUES
 	('testcookie', 1),

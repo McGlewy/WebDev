@@ -1,6 +1,5 @@
 //Code from https://www.w3schools.com/js/js_cookies.asp
 
-
 function setCookie(cname, cvalue, exdays) 
 {
 	var d = new Date();
@@ -39,6 +38,7 @@ function checkCookie()
 		if (username != "" && username != null) 
 		{
 			setCookie("username", username, 365);
+			
 		}
 	} 
 }

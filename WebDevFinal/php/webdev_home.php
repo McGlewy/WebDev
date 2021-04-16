@@ -3,20 +3,25 @@
 
 	<head>
 		<style>
-		  .center {
-			text-align: center
-		  }
+			.center {
+				text-align: center;
+			}
 
-		  .container {
-			display: flex;
-			justify-content: space-evenly;
-		  }
+			.container {
+				display: flex;
+				justify-content: space-evenly;
+			}
 
-		  .imagecenter {
-			display: block;
-			margin-left: auto;
-			margin-right: auto;
-		  }
+			.imagecenter {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			.pictures{
+				width: 500px;
+				height: 300px;
+			}
 		</style>
 		<script src="../JavaScript/cookies.js" type="text/javascript"></script>
 		<script src="../Javascript/home_script.js" type="text/javascript"></script> 
@@ -35,13 +40,13 @@
 		</h2>
 
 		<p class="center"><input type="text" placeholder="Search.." size="100" /></p>
-
+		<div id="panel"></div>
 		<div class="container">
 		  <table border="0">
 			<tbody>
 				<?php
 					require '../php/database_connection.php';
-				
+					$conn = openConnection();
 					$result = $conn->query('SELECT * FROM Photos');
 					$numopen = 0;
 					$numclosed = 0;
@@ -56,7 +61,8 @@
 								$numopen += 1;
 							}
 							
-							echo '<td><img class="pictures" src="../Images/Full/'.$row["link"].'" alt="'.$row["title"].'"/></td>';
+							echo '<td><img class="pictures" src="../Images/Full/'.$row["link"].'" alt="'.$row["title"].'"/>
+							</td>';
 							
 							if($item_count % 3 === 3)
 							{

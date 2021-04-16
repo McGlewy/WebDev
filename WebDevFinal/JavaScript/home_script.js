@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	console.log("ajax started");
+	console.log("Initial AJAX call made");
 	$.ajax
 	({
 		url: "../php/home_script.php",
@@ -7,6 +7,7 @@ $(document).ready(function () {
 		dataType: "JSON",
 		success: function (response)
 		{
+			console.log("Data Received");
 			var table = $("#pictable");
 			var row = 0;
 
@@ -19,8 +20,10 @@ $(document).ready(function () {
 					table.append("<tr id='row-" + row + "'></tr>");
 				}
 
+				//Adds image to table and data to image
 				$("#row-" + row).append("<td><img class='imgs' src='../images/Full/" + data.link + "'"
-					+ " alt = '" + data.title + "'/></td>"
+					+ " alt = '" + data.title + "'data-id ='" + data.id + "' data-artist='" + data.artist + "' data-desc='"
+					+ data.desc + "' data-price='" + data.price + "'/></td>"
 				);
 
 				if (count % 3 == 2)
@@ -43,62 +46,58 @@ function applyPanel() {
 	var images = document.getElementsByClassName("imgs");
 	var panel = document.getElementById("panel");
 	var remove = document.createElement("button");
-	remove.setAttribute("value", "X");
+	remove.innerHTML = "X";
 	remove.onclick = function () {
 		panel.innerHTML = "";
 		//add reformat picture table function here
 	}
-	console.log(images)
-	console.log(images.length)
-	console.log("made it this far");
 
 	for (var x = 0; x < images.length; x++)
 	{
-		onClickApplication(images[x]);
+		onClickApplication(images[x], panel, remove);
 	}
 }
 
-function onClickApplication(orgImage)
+function onClickApplication(orgImage, panel, remove)
 {
 	var image = orgImage.cloneNode(false);
-	originalImage.onclick = function () {
-		console.log("inner ajax start");
-		$.ajax({
-			url: "../php/panel.php",
-			type: "get",
-			data:
-			{
-				title: $(orgImage).attr("alt")
-			},
-			dataType: "JSON",
-			success: function (response) {
-				panel.innerHTML = "";
-				$(panel).append(remove);
-				$(panel).append(image);
-				$(panel).append(
-					"<p>" + response.title + "</p><p>" + response.name
-					+ "</p></br><p>" + response.desc + "</p></br><p>" + response.price + "</p>"
-				);
-
-				var add = document.createElement("button");
-				add.setAttribute("value", "Add to Cart");
-				add.onclick = function () {
-					$.ajax({
-						url: "../php/add_to_cart.php",
-						type: "POST",
-						data:
-						{
-							id: response.id
-						},
-						success: function () {
-							console.log("success");
-						},
-						error: function () {
-							console.log("failure");
-						}
-					})
+	orgImage.onclick = function ()
+	{
+		panel.innerHTML = "";
+		panel.append(remove);
+		$(panel).append("</br>");
+		panel.append(image);
+		$(panel).append("</br>");
+		panel.append("Title: " + $(image).attr("alt"));
+		$(panel).append("</br>");
+		panel.append("Artist: " + $(image).attr("data-artist"));
+		$(panel).append("</br>");
+		$(panel).append("</br>");
+		panel.append($(image).attr("data-desc"));
+		$(panel).append("</br>");
+		panel.append("Price: $" + $(image).attr("data-price"));
+		$(panel).append("</br>");
+		$(panel).append("</br>");
+		var add = document.createElement("button");
+		add.innerHTML = "Add to Cart";
+		panel.append(add);
+		add.onclick = function () {
+			$.ajax({
+				url: "../php/add_to_cart.php",
+				type: "POST",
+				data:
+				{
+					id: parseInt($(image).attr("data-id"))
+				},
+				success: function ()
+				{
+					console.log("Success with AJAX call");
+				},
+				error: function ()
+				{
+					console.log("Failure");
 				}
-			}
-		})
-	};
+			})
+		}
+	}
 }

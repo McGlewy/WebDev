@@ -1,5 +1,5 @@
 <?php
-	include 'database_connection.php';
+	require 'database_connection.php';
 	
 	$conn = openConnection();
 

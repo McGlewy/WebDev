@@ -2,7 +2,7 @@ $(document).ready(function () {
 	console.log("Initial AJAX call made");
 	$.ajax
 	({
-		url: "../php/home_script.php",
+		url: "../php/initial_propogation.php",
 		type: "get",
 		dataType: "JSON",
 		success: function (response)
@@ -47,7 +47,8 @@ function applyPanel() {
 	var panel = document.getElementById("panel");
 	var remove = document.createElement("button");
 	remove.innerHTML = "X";
-	remove.onclick = function () {
+	remove.onclick = function ()
+	{
 		panel.innerHTML = "";
 		//add reformat picture table function here
 	}
@@ -74,6 +75,7 @@ function onClickApplication(orgImage, panel, remove)
 		$(panel).append("</br>");
 		$(panel).append("</br>");
 		panel.append($(image).attr("data-desc"));
+		$(panel).append("</br>");
 		$(panel).append("</br>");
 		panel.append("Price: $" + $(image).attr("data-price"));
 		$(panel).append("</br>");

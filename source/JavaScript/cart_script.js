@@ -86,7 +86,7 @@ function requestRemove(id, button)
 	$.ajax
 	({
 		url: "../php/remove_item.php",
-		type: "GET",
+		type: "POST",
 		data: {
 			id: id
         },

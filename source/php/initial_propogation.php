@@ -10,13 +10,26 @@
 		$artist_query = $conn->query('SELECT * FROM Artists WHERE artist = '.$row["artist"]);
 		$artist = $artist_query->fetch_assoc();
 
+		$id = $row["id"];
+		$cookie = $_COOKIE["username"] ?? '';
+
+		//Check to see if item in cart
+		$check = $conn->query('SELECT * FROM Carts WHERE cookie ="'.$cookie.'" AND item = '.$id);
+		$cart = 0;
+
+		if($check->fetch_assoc())
+		{
+			$cart = 1;
+		}
+
 		$data[] = array(
-			"id" => $row["id"],
+			"id" => $id,
 			"title" => $row["title"],
 			"desc" => $row["description"],
 			"artist" => $artist["name"],
 			"price" => $row["price"],
-			"link" => $row["link"]
+			"link" => $row["link"],
+			"cart" => $cart
 		);
 	}
 	

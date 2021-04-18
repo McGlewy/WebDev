@@ -3,7 +3,7 @@
 
 	$conn = openConnection();
 
-	$item = $_GET["id"] ?? '';
+	$item = $_POST["id"] ?? '';
 	if(!is_numeric($item))
 	{
 		$item = intval($item);

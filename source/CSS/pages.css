@@ -18,7 +18,7 @@ li {
     text-align: right
 }
 
-table, th, td {
+#cart {
     border: 1px solid black;
     border-collapse: collapse;
 }
@@ -27,14 +27,16 @@ table, th, td {
     width: auto;
     height: 10px;
 }
+
 .center {
     text-align: center;
 }
 
-.container {
-    display: flex;
-    justify-content: space-evenly;
+table .center {
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 .imagecenter {
     display: block;

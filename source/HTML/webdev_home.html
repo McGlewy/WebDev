@@ -1,42 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <style>
-        .center {
-            text-align: center;
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-evenly;
-        }
-
-        .imagecenter {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .imgs {
-            width: 500px;
-            height: 300px;
-        }
-
-        .data {
-            visibility: hidden;
-        }
-    </style>
-    <script src="../JavaScript/jquery-3.6.0.js" type="text/javascript"></script>
-    <script src="../JavaScript/cookies.js" type="text/javascript"></script>
-    <script src="../Javascript/home_script.js" type="text/javascript"></script>
-
-</head>
-
+    <head>
+        <script src="../JavaScript/jquery-3.6.0.js" type="text/javascript"></script>
+        <script src="../JavaScript/cookies.js" type="text/javascript"></script>
+        <script src="../Javascript/home_script.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="../CSS/pages.css">
+    </head>
     <body style="background-color:rgba(63, 127, 191, 0.45);">
-<!--        <img src="logo.png" alt="logo" class="imagecenter" style="width:500px; height:100px;"> -->
- 
+        <!--        <img src="logo.png" alt="logo" class="imagecenter" style="width:500px; height:100px;"> -->
+
         <section class="center">
-            <nav class="container">
+            <nav>
                 <h2>
                     <a href="webdev_home.html">Home</a>
                     <a href="webdev_cart.html">Cart</a>
@@ -45,11 +19,14 @@
         </section>
 
         <p class="center"><input type="text" placeholder="Search.." size="100" /></p>
-        <div id="panel"></div>
-        <div class="container">
-            <table border="0">
+
+        <div id="leftcolumn" class="column center">
+            <article id="panel" class="column"></article>
+
+            <table>
                 <tbody id="pictable"></tbody>
             </table>
         </div>
+        
     </body>
 </html>

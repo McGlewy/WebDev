@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="../CSS/pages.css">
         <script src="../JavaScript/jquery-3.6.0.js" type="text/javascript"></script>
         <script src="../JavaScript/cookies.js" type="text/javascript"></script>
         <script src="../Javascript/home_script.js" type="text/javascript"></script>
-        <link rel="stylesheet" href="../CSS/pages.css">
+        <script src="../Javascript/search.js" type="text/javascript"></script>
     </head>
     <body style="background-color:rgba(63, 127, 191, 0.45);">
         <!--        <img src="logo.png" alt="logo" class="imagecenter" style="width:500px; height:100px;"> -->
@@ -18,15 +19,15 @@
             </nav>
         </section>
 
-        <p class="center"><input type="text" placeholder="Search.." size="100" /></p>
+        <p class="center"><input type="text" id="search" placeholder="Search.." size="100"/></p>
 
-        <div id="leftcolumn" class="column center">
-            <article id="panel" class="column"></article>
-
+        <div id="leftcolumn" class="column">
             <table>
                 <tbody id="pictable"></tbody>
             </table>
         </div>
-        
+        <article id="panel" class="column"></article>
+
+
     </body>
 </html>

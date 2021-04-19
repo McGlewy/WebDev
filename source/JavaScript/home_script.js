@@ -1,3 +1,6 @@
+//For storing copies of data to prevent duplicate AJAX calls in search
+var initialResponse;
+
 $(document).ready(function () {
 	console.log("Initial AJAX call made");
 	$.ajax
@@ -8,6 +11,7 @@ $(document).ready(function () {
 		success: function (response)
 		{
 			console.log("Data Received");
+			initialResponse = response;
 			var list = createImages(response);
 			organizeImages(list, 3);
 			applyPanel();
@@ -20,8 +24,6 @@ $(document).ready(function () {
 	});
 });
 
-
-
 function applyPanel()
 {
 	//store all images and create image element for each image in html page.
@@ -33,6 +35,8 @@ function applyPanel()
 	{
 		panel.innerHTML = "";
 		organizeImages(toArray(document.getElementsByClassName("imgs")), 3);
+		$("#leftcolumn").removeClass("left");
+		$(panel).removeClass("right");
 	}
 
 	for (var x = 0; x < images.length; x++)
@@ -204,5 +208,7 @@ function onClickApplication(orgImage, panel, close)
 				}
 			})
 		}
+		$("#leftcolumn").addClass("left");
+		$(panel).addClass("right");
 	}
 }

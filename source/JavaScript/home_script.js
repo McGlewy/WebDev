@@ -10,7 +10,7 @@ $(document).ready(function () {
 		dataType: "JSON",
 		success: function (response)
 		{
-			console.log("Data Received");
+			console.log("Initial AJAX Call Successful");
 			initialResponse = response;
 			var list = createImages(response);
 			organizeImages(list, 3);
@@ -65,8 +65,6 @@ function createImages(response)
 
 function organizeImages(response, rows)
 {
-	console.log("Entering organizeImages,", response, rows);
-
 	var table = $("#pictable");
 	var row = 0;
 
@@ -87,8 +85,6 @@ function organizeImages(response, rows)
 		}
 
 		$("#item-" + count).append(response[count]);
-
-		console.log(document.getElementById("row-" + row), count, row, response.length);
 
 		if (count % rows == rows - 1)
 		{
@@ -162,8 +158,6 @@ function onClickApplication(orgImage, panel, close)
 
 		add.onclick = function ()
 		{
-			console.log(document.getElementsByClassName("imgs"));
-
 			$.ajax({
 				url: "../php/add_to_cart.php",
 				type: "POST",
@@ -186,9 +180,6 @@ function onClickApplication(orgImage, panel, close)
 		}
 		remove.onclick = function ()
 		{
-			console.log("Remove Function Initiated")
-			console.log(document.getElementsByClassName("imgs"));
-
 			$.ajax({
 				url: "../php/remove_item.php",
 				type: "POST",

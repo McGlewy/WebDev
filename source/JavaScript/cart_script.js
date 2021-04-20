@@ -7,11 +7,10 @@ $(document).ready(function () {
 		dataType: "JSON",
 		success: function (response) {
 			console.log("Initial AJAX Call Successful");
-			console.log(response.length);
 			if (response.length == 0)
 			{
 				$("#remove-all").css("visibility", "hidden");
-				$("#paypal").css("visibility", "hidden");
+				$("#download").css("visibility", "hidden");
 				$("#cart").html("Empty");
 			}
 			else
@@ -31,6 +30,11 @@ $(document).ready(function () {
 	document.getElementById("remove-all").onclick = function ()
 	{
 		requestRemoveAll();
+		alert("Cart successfully emptied");
+	}
+	document.getElementById("download").onclick = function ()
+	{
+		requestDownload();
 	}
 });
 
@@ -43,14 +47,12 @@ function onClickApplication(data, count, table)
 	button.innerHTML = "Remove";
 	$(button).addClass("remove");
 	table.append("<tr id='" + row + "'><td><img class='imgs' src='../Images/Full/" + data.link
-		+ "' alt='" + data.title + "'/></td>"
+		+ "' alt='" + data.link + "'/></td>"
 		+ "<td>" + data.title + "</br>" + data.artist + "</td>"
 		+ "<td>" + data.price + "</td></tr>"
 	);
 	$('#' + row).append(button);
-	console.log("i appended here")
 	button.onclick = function () {
-		console.log("button clicked");
 		requestRemove(parseInt(data.id), this);
 	}
 }
@@ -66,10 +68,9 @@ function requestRemoveAll()
 			url: "../php/remove_all.php",
 			type: "GET",
 			success: function () {
-				alert("Cart successfully emptied");
 				$("#cart").html("Empty");
 				$("#remove-all").css("visibility", "hidden");
-				$("#paypal").css("visibility", "hidden");
+				$("#download").css("visibility", "hidden");
 			},
 			error: function () {
 				alert("Failed to remove items from cart")
@@ -98,11 +99,77 @@ function requestRemove(id, button)
 			{
 				$("#cart").html("Empty");
 				$("#remove-all").css("visibility", "hidden");
-				$("#paypal").css("visibility", "hidden");
+				$("#download").css("visibility", "hidden");
 			}
 		},
 		error: function () {
 			alert("Failed to remove item from cart")
 		}
 	});
+}
+
+function requestDownload()
+{
+	var data = [];
+	data[0] = document.createElement("button");
+	data[0].innerHTML = "X";
+	data[1] = "<p>You are about to download the following:</p>";
+
+	var images = $(".imgs");
+	console.log(images.length, images);
+	for (var count = 0; count < images.length; count++)
+	{
+		data[count + 2] = "<p>" + $(images[count]).attr("alt") + "</p>";
+		console.log(data[count + 2]);
+	}
+
+	for (var count = 0; count < data.length; count++)
+	{
+		$("#panel").append(data[count].valueOf());
+	}
+
+	var button = document.createElement("button");
+	button.innerHTML = "Download";
+
+	$("#panel").append(button);
+
+	data[0].onclick = function ()
+	{
+		$("#panel").empty();
+		$("#body").removeClass("invisible");
+    }
+
+	button.onclick = function ()
+	{
+		downloadFiles();
+		requestRemoveAll();
+		alert("Files Downloaded");
+		$("#panel").empty();
+		$("#body").removeClass("invisible");
+		$("#download").css("visibility", "hidden");
+	}
+
+	$("#body").addClass("invisible");
+
+}
+
+function downloadFiles()
+{
+	console.log("made it to download")
+	var link = document.createElement("a");
+	document.body.appendChild(link);
+
+	var images = $(".imgs");
+
+	for (var count = 0; count < images.length; count++)
+	{
+		var download = images[count];
+		console.log($(download).attr("src"), $(download).attr("alt"));
+		$(link).attr("href", $(download).attr("src"));
+		$(link).attr("download", $(download).attr("alt"));
+
+		link.click();
+	}
+
+	document.body.removeChild(link);
 }

@@ -12,12 +12,9 @@ function search()
 {
 	var images = createImages(initialResponse);
 	var data = document.getElementById("search").value.toLowerCase();
-	console.log(data);
 	for (var count = 0; count < images.length; count++)
 	{
 		var item = images[count].children[0];
-
-		console.log($(item).attr("data-artist"), $(item).attr("data-desc"), $(item).attr("data-price"))
 
 		if (!$(item).attr("src").substring(String.prototype.indexOf($(item).attr("src"))).toLowerCase().includes(data) &&
 			!$(item).attr("data-desc").toLowerCase().includes(data) &&
@@ -41,15 +38,16 @@ function search()
 			visible.push(item);
 		}
 	}
-	console.log(visible);
+	$("#pictable").empty();
+	$("#panel").empty();
+
 	if (visible.length == 0)
 	{
-		//visbile empty text here
+		$("#error").append("No Items Found");
 	}
 	else
 	{
-		$("#pictable").empty();
-		$("#panel").empty();
+		$("#error").empty();
 		organizeImages(visible, 3);
 		applyPanel();
 	}

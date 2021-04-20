@@ -7,23 +7,26 @@
 		<link rel="stylesheet" href="../CSS/pages.css">
 		<title>Company Name</title>
 	</head>
-	<body>
+	<body style="background-color:rgba(63, 127, 191, 0.45);">
 
-		<h1 align="center">Company Name</h1>
-		<nav id="navbar">
-			<a href="webdev_home.html">Home</a>
-			<a href="webdev_cart.html">Cart</a>
-			<br />
-		</nav>
-		<section id="panel"></section>
-		<section id="body">
-			<h2 align="left">Your Cart</h2>
-			<input type="button" value="Remove All" class="remove" id="remove-all" />
-			<table id="cart"></table>
-
-			<button id="download">Download Cart Items</button>
-		</section>
-
+		<div class="content">
+			<img src="../Images/Icons/logo.png" alt="logo" class="imagecenter" style="width:500px; height:100px;">
+			<section class="centered">
+				<nav id="navbar">
+					<h2>
+						<a href="webdev_home.html">Home</a>
+						<a href="webdev_cart.html">Cart</a>
+					</h2>
+				</nav>
+			</section>
+			<section id="cartpanel"></section>
+			<section id="body">
+				<h2 align="center">Your Cart</h2>
+				<input type="button" value="Remove All" class="remove" id="remove-all" />
+				<table id="cart"></table>
+				<button id="download">Download Cart Items</button>
+			</section>
+		</div>
 	</body>
 </html>
 		

@@ -125,17 +125,17 @@ function requestDownload()
 
 	for (var count = 0; count < data.length; count++)
 	{
-		$("#panel").append(data[count].valueOf());
+		$("#cartpanel").append(data[count].valueOf());
 	}
 
 	var button = document.createElement("button");
 	button.innerHTML = "Download";
 
-	$("#panel").append(button);
+	$("#cartpanel").append(button);
 
 	data[0].onclick = function ()
 	{
-		$("#panel").empty();
+		$("#cartpanel").empty();
 		$("#body").removeClass("invisible");
     }
 
@@ -144,7 +144,7 @@ function requestDownload()
 		downloadFiles();
 		requestRemoveAll();
 		alert("Files Downloaded");
-		$("#panel").empty();
+		$("#cartpanel").empty();
 		$("#body").removeClass("invisible");
 		$("#download").css("visibility", "hidden");
 	}
@@ -152,6 +152,8 @@ function requestDownload()
 	$("#body").addClass("invisible");
 
 }
+
+//Code from user Dan at https://stackoverflow.com/questions/18451856/how-can-i-let-a-user-download-multiple-files-when-a-button-is-clicked
 
 function downloadFiles()
 {
@@ -173,3 +175,5 @@ function downloadFiles()
 
 	document.body.removeChild(link);
 }
+
+//End of code from user Dan at https://stackoverflow.com/questions/18451856/how-can-i-let-a-user-download-multiple-files-when-a-button-is-clicked

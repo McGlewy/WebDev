@@ -27,12 +27,22 @@ CREATE TABLE Carts(
 );
 
 INSERT INTO Artists (artist, name) VALUES
-	(0,"Devin"),
-    	(1,"Sophia"),
-   	(2,"Greg");
+   	(0,"Greg Rakozy"),
+	(1,"Anna Utekhina"),
+	(2,"Feng Wei");
+	
+	
 
 INSERT INTO Photos (id, title, artist, description, link, price) VALUES
-	(1, 'testphoto1', 1, 'bad description', 'testphoto1.jpg',20.00),
-	(2, 'testphoto2', 2, 'also bad description', 'testphoto2.jpg',40.00),
-	(3, 'testphoto3', 2, 'bdalso', 'testphoto3.jpg',50.00),
-	(4, 'testphoto4', 0, 'asdsfalds', 'testphoto4.jpg', 60.00);
+	(1, 'Silhouette', 0, 'Silhouette of someone staring up into the sky', 'Silhouette.jfif', 20.99),
+	(2, 'Bridge', 0, 'A bridge deep in the forest', 'Bridge.jpg', 39.99),
+	(3, 'Winter Forest', 0, 'Walking in the winter forest', 'Winter_Forest.jpg', 15.49),
+	(4, 'Friends', 1, 'Two pals on a stump', 'Friends.png', 60.00),
+	(5, 'Bloodhound', 1, 'A bloodhound in the street', 'Bloodhound.jpg', 5.99),
+	(6, 'Clones', 1, 'Two kittens that are clones', 'Clones.jpg', 17.99),
+	(7, 'Mountain Lake', 2, 'A beautiful lake at the foot of a mountain', 'Mountain_Lake.jpg', 19.99),
+	(8, 'Sunrise over Sky Farmland', 2, 'Early morning sunrise taken from above a farm', 'sunrise-over-sky-farmland.jpg', 86.06),
+	(9, 'Yubeng Tibetan Village, Yunnan China', 2, 'Look over a Tibetan village', 'yubeng-tibetan-village-yunnan-china.jpg', 68.97);
+	
+	
+
